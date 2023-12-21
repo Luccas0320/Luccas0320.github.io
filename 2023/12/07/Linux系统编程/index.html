@@ -6,16 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Ubuntu和CentOSUbuntu系统和CentOS都是Linux系统 CentOS可以直接安装换系统，也可以通过虚拟机安装得到 Ubuntu可以在电脑上同时使用Linux和Windows系统 Linux系统： “所见皆文件” Linux系统目录：bin：存放二进制可执行文件  boot：存放开机启动程序  dev：存放设备文件： 字符设备、块设备  home：存放普通用户  etc：用户信息">
+    <meta name="description" content="Ubuntu和CentOSUbuntu系统和CentOS都是Linux系统 CentOS可以直接安装换系统，也可以通过虚拟机安装得到 Ubuntu可以在电脑上同时使用Linux和Windows系统 Linux系统： “所见皆文件”  方便性：使计算机系统易于使用 有效性：以更有效的方式使用计算机系统资源 扩展性：方便用户有效开发、测试和引进新功能 开放性：所谓开放性，是指系统能遵循世界标准规范，特">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux系统编程">
 <meta property="og:url" content="https://luccas0320.github.io/2023/12/07/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Ubuntu和CentOSUbuntu系统和CentOS都是Linux系统 CentOS可以直接安装换系统，也可以通过虚拟机安装得到 Ubuntu可以在电脑上同时使用Linux和Windows系统 Linux系统： “所见皆文件” Linux系统目录：bin：存放二进制可执行文件  boot：存放开机启动程序  dev：存放设备文件： 字符设备、块设备  home：存放普通用户  etc：用户信息">
+<meta property="og:description" content="Ubuntu和CentOSUbuntu系统和CentOS都是Linux系统 CentOS可以直接安装换系统，也可以通过虚拟机安装得到 Ubuntu可以在电脑上同时使用Linux和Windows系统 Linux系统： “所见皆文件”  方便性：使计算机系统易于使用 有效性：以更有效的方式使用计算机系统资源 扩展性：方便用户有效开发、测试和引进新功能 开放性：所谓开放性，是指系统能遵循世界标准规范，特">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://luccas0320.github.io/2023/12/07/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1701949684490.png">
+<meta property="og:image" content="https://luccas0320.github.io/2023/12/07/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1701951815880.png">
+<meta property="og:image" content="https://luccas0320.github.io/2023/Program%20Files%20(x86)/MyBlog/source/_posts/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1701952056166.png">
+<meta property="og:image" content="https://luccas0320.github.io/2023/12/07/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1701952830500.png">
 <meta property="article:published_time" content="2023-12-07T08:34:19.000Z">
-<meta property="article:modified_time" content="2023-12-07T11:48:13.797Z">
+<meta property="article:modified_time" content="2023-12-18T03:29:43.235Z">
 <meta property="article:author" content="Luccas0320">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://luccas0320.github.io/2023/12/07/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1701949684490.png">
@@ -83,6 +86,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" aria-label="Previous post" href="/2023/12/18/%E6%8A%84%E9%98%BF%E7%A7%80%E7%9A%84%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" aria-label="Next post" href="/2023/12/07/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8Atlas-200I-DK-A2%E5%BC%80%E5%8F%91%E8%80%85%E5%A5%97%E4%BB%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B%E6%83%85/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -114,7 +119,7 @@
     
     
       <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ubuntu%E5%92%8CCentOS"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu和CentOS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">Linux系统目录：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%EF%BC%9A-7-8-%E7%A7%8D"><span class="toc-number">2.1.</span> <span class="toc-text">Linux系统文件类型： 7&#x2F;8 种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E8%BF%9E%E6%8E%A5%EF%BC%9A%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">软连接：快捷方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">硬链接：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">创建用户：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E5%B1%9E%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">2.4.1.</span> <span class="toc-text">修改文件所属用户：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">2.4.2.</span> <span class="toc-text">删除用户：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E7%BB%84%EF%BC%9A"><span class="toc-number">2.4.3.</span> <span class="toc-text">创建用户组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E5%B1%9E%E7%94%A8%E6%88%B7%E7%BB%84%EF%BC%9A"><span class="toc-number">2.4.4.</span> <span class="toc-text">修改文件所属用户组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%BB%84%EF%BC%9A"><span class="toc-number">2.4.5.</span> <span class="toc-text">删除组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8chown-%E4%B8%80%E6%AC%A1%E4%BF%AE%E6%94%B9%E6%89%80%E6%9C%89%E8%80%85%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84%EF%BC%9A"><span class="toc-number">2.4.6.</span> <span class="toc-text">使用chown 一次修改所有者和所属组：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%89%BE%E6%96%87%E4%BB%B6"><span class="toc-number">2.5.</span> <span class="toc-text">find命令：找文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E9%81%93%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.5.1.</span> <span class="toc-text">管道运算符 |</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%89%BE%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">2.6.</span> <span class="toc-text">grep命令：找文件内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#touch"><span class="toc-number">2.7.</span> <span class="toc-text">touch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="toc-number">2.8.</span> <span class="toc-text">软件安装：</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu%E5%92%8CCentOS"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu和CentOS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">Linux系统目录：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%EF%BC%9A-7-8-%E7%A7%8D"><span class="toc-number">3.</span> <span class="toc-text">Linux系统文件类型： 7&#x2F;8 种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E8%BF%9E%E6%8E%A5%EF%BC%9A%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">软连接：快捷方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">硬链接：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">创建用户：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E5%B1%9E%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">6.1.</span> <span class="toc-text">修改文件所属用户：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">6.2.</span> <span class="toc-text">删除用户：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E7%BB%84%EF%BC%9A"><span class="toc-number">6.3.</span> <span class="toc-text">创建用户组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E5%B1%9E%E7%94%A8%E6%88%B7%E7%BB%84%EF%BC%9A"><span class="toc-number">6.4.</span> <span class="toc-text">修改文件所属用户组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%BB%84%EF%BC%9A"><span class="toc-number">6.5.</span> <span class="toc-text">删除组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8chown-%E4%B8%80%E6%AC%A1%E4%BF%AE%E6%94%B9%E6%89%80%E6%9C%89%E8%80%85%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84%EF%BC%9A"><span class="toc-number">6.6.</span> <span class="toc-text">使用chown 一次修改所有者和所属组：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%89%BE%E6%96%87%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">find命令：找文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E9%81%93%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">7.1.</span> <span class="toc-text">管道运算符 |</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk"><span class="toc-number">8.</span> <span class="toc-text">awk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%89%BE%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">9.</span> <span class="toc-text">grep命令：找文件内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#touch"><span class="toc-number">10.</span> <span class="toc-text">touch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="toc-number">11.</span> <span class="toc-text">软件安装：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%BA%90%EF%BC%9A"><span class="toc-number">11.1.</span> <span class="toc-text">软件源：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%99%E6%98%AF%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85%EF%BC%8C%E5%90%8C%E6%97%B6%E4%B9%9F%E6%94%AF%E6%8C%81%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="toc-number">11.1.1.</span> <span class="toc-text">这是在线安装，同时也支持离线安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PS"><span class="toc-number">11.1.2.</span> <span class="toc-text">PS:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="toc-number">11.2.</span> <span class="toc-text">压缩包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-number">12.</span> <span class="toc-text">多进程</span></a></li></ol>
       </div>
     
   </span>
@@ -154,11 +159,17 @@
   
 
   <div class="content e-content" itemprop="articleBody">
-    <h1 id="Ubuntu和CentOS"><a href="#Ubuntu和CentOS" class="headerlink" title="Ubuntu和CentOS"></a>Ubuntu和CentOS</h1><p>Ubuntu系统和CentOS都是Linux系统</p>
+    <h2 id="Ubuntu和CentOS"><a href="#Ubuntu和CentOS" class="headerlink" title="Ubuntu和CentOS"></a>Ubuntu和CentOS</h2><p>Ubuntu系统和CentOS都是Linux系统</p>
 <p>CentOS可以直接安装换系统，也可以通过虚拟机安装得到</p>
 <p>Ubuntu可以在电脑上同时使用Linux和Windows系统</p>
 <p>Linux系统： “所见皆文件”</p>
-<h1 id="Linux系统目录："><a href="#Linux系统目录：" class="headerlink" title="Linux系统目录："></a>Linux系统目录：</h1><pre><code>bin：存放二进制可执行文件
+<ul>
+<li>方便性：使计算机系统易于使用</li>
+<li>有效性：以更有效的方式使用计算机系统资源</li>
+<li>扩展性：方便用户有效开发、测试和引进新功能</li>
+<li>开放性：所谓开放性，是指系统能遵循世界标准规范，特别是遵循开放系统互连OSI 国际标准。</li>
+</ul>
+<h2 id="Linux系统目录："><a href="#Linux系统目录：" class="headerlink" title="Linux系统目录："></a>Linux系统目录：</h2><pre><code>bin：存放二进制可执行文件
 
 boot：存放开机启动程序
 
@@ -239,19 +250,27 @@ sudo chgrp g88 a.c
 
 -ok: 以交互式的方式 将find搜索的结果集执行某一指定命令
 </code></pre>
-<h3 id="管道运算符"><a href="#管道运算符" class="headerlink" title="管道运算符 |"></a>管道运算符 |</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find ./ -maxdepth -type f | -exec ls -l &#123;&#125; \</span><br><span class="line">find ./ -maxdepth -type f | -xarg ls -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find ../ -size +21k -size -23k exec ls -l &#123;&#125; \;</span><br><span class="line">在大括号之前存放找到文件之后执行的命令（查看详细信息）</span><br><span class="line">相当于   +管道| +xargs + 找到文件之后执行的命令</span><br><span class="line">find ../ -size +21k -size -23k | xargs ls -l &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="管道运算符"><a href="#管道运算符" class="headerlink" title="管道运算符 |"></a>管道运算符 |</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find ./ -maxdepth -type f -exec ls -l &#123;&#125; \；</span><br><span class="line">find ./ -maxdepth -type f | -xargs ls -l</span><br></pre></td></tr></table></figure>
 
 <p>两者都是找到文件之后执行</p>
 <p><font color="cornflowerblue">但是exec是所有命令一股脑执行</font></p>
 <p>xargs当结果比较大的时候分开处理，分区，处理完第一片再处理第二片，<font color="orange">但是对于文件名中有空格的文件会误拆分</font>、</p>
 <p><img src="/2023/12/07/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1701949684490.png" alt="1701949684490"></p>
 <p>此时需要用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -maxdepth -type f -print0| -xarg print0 ls -l;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -maxdepth -type f -print0| -xarg -0 ls -l</span><br></pre></td></tr></table></figure>
 
+<p>第一个-print是find的参数</p>
 <p>xargs拆分原来是用空格作为区分依据的现在改成0</p>
 <p>-xargs：将find搜索的结果集执行某一指定命令。  当结果集数量过大时，可以分片映射。</p>
 <p>​	find &#x2F;usr&#x2F; -name ‘<em>tmp</em>‘ | xargs ls -ld </p>
 <p>-print0：<br>    find &#x2F;usr&#x2F; -name ‘<em>tmp</em>‘ -print0 | xargs  -0 ls -ld </p>
+<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p>awk  行拆分</p>
+<p>sed 列拆分</p>
+<p>很复杂暂时不看</p>
 <h2 id="grep命令：找文件内容"><a href="#grep命令：找文件内容" class="headerlink" title="grep命令：找文件内容"></a>grep命令：找文件内容</h2><pre><code>grep -r &#39;copy&#39; ./ -n
 
     -n参数：:显示行号
@@ -262,23 +281,73 @@ ps aux | grep &#39;cupsd&#39;  -- 检索进程结果集。
 
 
 
-<h2 id="软件安装："><a href="#软件安装：" class="headerlink" title="软件安装："></a>软件安装：</h2><pre><code>1. 联网
+<h2 id="软件安装："><a href="#软件安装：" class="headerlink" title="软件安装："></a>软件安装：</h2><p><strong>CentOS的软件安装工具不是apt-get ，而是yum，Ubuntu使用apt-get</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 联网</span><br><span class="line"></span><br><span class="line">2. 更新软件资源列表到本地。  sudo apt-get，yum update</span><br><span class="line"></span><br><span class="line">3. 安装 sudo apt-get/yum install 软件名</span><br></pre></td></tr></table></figure>
 
-2. 更新软件资源列表到本地。  sudo apt-get update
-
-3. 安装 sudo apt-get install 软件名
-
-4. 卸载	sudo apt-get remove 软件名
+<h3 id="软件源："><a href="#软件源：" class="headerlink" title="软件源："></a>软件源：</h3><p>一般是国内的服务器从国外的服务器下载安装软件，然后用户从国内的服务器上下载软件安装，<font color="orange">在下载的同时会更新国内服务器的软件列表(2)</font></p>
+<p><img src="/2023/12/07/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1701951815880.png" alt="1701951815880"></p>
+<pre><code>4. 卸载	sudo apt-get/yum remove 软件名
 
 5. 使用软件包（.deb） 安装：	sudo dpkg -i 安装包名。
 </code></pre>
-<p>tar压缩：</p>
+<h4 id="这是在线安装，同时也支持离线安装"><a href="#这是在线安装，同时也支持离线安装" class="headerlink" title="这是在线安装，同时也支持离线安装"></a>这是在线安装，同时也支持离线安装</h4><p><img src="/2023/12/07/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/../../../Program%20Files%20(x86)/MyBlog/source/_posts/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1701952056166.png" alt="1701952056166"></p>
+<p>Linux和fred bsd</p>
+<p>Linux 两大分支</p>
+<p>参考的这个 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/garinzhang/p/diff_between_yum_apt-get_in_linux.html">https://www.cnblogs.com/garinzhang/p/diff_between_yum_apt-get_in_linux.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=RedHat&spm=1001.2101.3001.7020">RedHat</a>系列：Redhat、Centos、Fedora等</p>
+<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Debian&spm=1001.2101.3001.7020">Debian</a>系列：Debian、Ubuntu等</p>
+<p><strong>RedHat 系列</strong></p>
+<ul>
+<li>常见的安装包格式 rpm包,安装rpm包的命令是“rpm -参数”</li>
+<li>包管理工具 yum</li>
+<li>支持tar包</li>
+</ul>
+<p><strong>Debian系列</strong></p>
+<ul>
+<li>常见的安装包格式 deb包,安装deb包的命令是“dpkg -参数”</li>
+<li>包管理工具 apt-get</li>
+<li>支持tar包</li>
+</ul>
+<p>.deb  安装包   相当于.exe文件</p>
+<p>安装安装包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i sl_3.03-17_amd64.deb</span><br></pre></td></tr></table></figure>
+
+<p>删除安装包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -r sl_3.03-17_amd64.deb</span><br></pre></td></tr></table></figure>
+
+<p>-r是递归的意思</p>
+<p>源码包安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1．解压缩源代码包</span><br><span class="line">2. cd dir</span><br><span class="line">3. ./configure</span><br><span class="line">检测文件是否缺失，创建Makefile（用于编译当前程序），检测编译环境</span><br><span class="line">4. make</span><br><span class="line">编译源码，生成库和可执行程序</span><br><span class="line">5. sudo make install</span><br><span class="line">把库和可执行程序，安装到系统路径下6. sudo make distclean</span><br><span class="line">删除和卸载软件</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h4><p>安装的时候yum出错了，先是报这个错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">failure: repodata/repomd.xml from dag: [Errno 256] No more mirrors to try.</span><br></pre></td></tr></table></figure>
+
+<p>再是报这个错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: File contains parsing errors: file:///etc/yum.repos.d/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<p>最后是按照这个帖子记录的解决的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/weixin_39137153/article/details/125454385</span><br></pre></td></tr></table></figure>
+
+<p>看不懂，但是解决了。记录一下后面知道的多了再回来看看</p>
+<p>按照这个链接安装rar</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/qq_21875331/article/details/110948805</span><br></pre></td></tr></table></figure>
+
+<p>但是在线链接还是不行</p>
+<p>改离线安装</p>
+<h3 id="压缩包"><a href="#压缩包" class="headerlink" title="压缩包"></a>压缩包</h3><p>tar压缩：</p>
 <pre><code>1. tar -zcvf 要生成的压缩包名	压缩材料。
-
+z: 以zip的方式进行压缩
+c: 创建打包文件
+v: 显示压缩过程 
+f: file  指定档案文件名称
+t: 列出档案中的文件
+x：解压
     tar zcvf  test.tar.gz  file1 dir2   使用 gzip方式压缩。
-
-    tar jcvf  test.tar.gz  file1 dir2   使用 bzip2方式压缩。
 </code></pre>
+<p>​		<br>​	也可以  tar zcvf  test.mp3  file1 dir2 会成功，但是不利于我们文件管理<br>​	tar.gz表示用tar命令以gzip的方式进行压缩</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar jcvf  test.tar.gz  file1 dir2   使用 bzip2方式压缩。  这个跟gzip压缩方式一样，也不能压缩目录，也不能同时压缩多个文件？  明明吧这些文件压缩到了test的压缩包里</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/12/07/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/1701952830500.png" alt="1701952830500"></p>
 <p>tar解压：</p>
 <pre><code>将 压缩命令中的 c --&gt; x
 
@@ -304,7 +373,7 @@ ps aux | grep &#39;cupsd&#39;  -- 检索进程结果集。
 
     unzip  testzip.zip 
 </code></pre>
-
+<h2 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h2>
   </div>
 </article>
 
@@ -331,7 +400,7 @@ ps aux | grep &#39;cupsd&#39;  -- 检索进程结果集。
     
     
       <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ubuntu%E5%92%8CCentOS"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu和CentOS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">Linux系统目录：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%EF%BC%9A-7-8-%E7%A7%8D"><span class="toc-number">2.1.</span> <span class="toc-text">Linux系统文件类型： 7&#x2F;8 种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E8%BF%9E%E6%8E%A5%EF%BC%9A%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">软连接：快捷方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">硬链接：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">创建用户：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E5%B1%9E%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">2.4.1.</span> <span class="toc-text">修改文件所属用户：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">2.4.2.</span> <span class="toc-text">删除用户：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E7%BB%84%EF%BC%9A"><span class="toc-number">2.4.3.</span> <span class="toc-text">创建用户组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E5%B1%9E%E7%94%A8%E6%88%B7%E7%BB%84%EF%BC%9A"><span class="toc-number">2.4.4.</span> <span class="toc-text">修改文件所属用户组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%BB%84%EF%BC%9A"><span class="toc-number">2.4.5.</span> <span class="toc-text">删除组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8chown-%E4%B8%80%E6%AC%A1%E4%BF%AE%E6%94%B9%E6%89%80%E6%9C%89%E8%80%85%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84%EF%BC%9A"><span class="toc-number">2.4.6.</span> <span class="toc-text">使用chown 一次修改所有者和所属组：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%89%BE%E6%96%87%E4%BB%B6"><span class="toc-number">2.5.</span> <span class="toc-text">find命令：找文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E9%81%93%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.5.1.</span> <span class="toc-text">管道运算符 |</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%89%BE%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">2.6.</span> <span class="toc-text">grep命令：找文件内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#touch"><span class="toc-number">2.7.</span> <span class="toc-text">touch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="toc-number">2.8.</span> <span class="toc-text">软件安装：</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu%E5%92%8CCentOS"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu和CentOS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">Linux系统目录：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%EF%BC%9A-7-8-%E7%A7%8D"><span class="toc-number">3.</span> <span class="toc-text">Linux系统文件类型： 7&#x2F;8 种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E8%BF%9E%E6%8E%A5%EF%BC%9A%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">软连接：快捷方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">硬链接：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">创建用户：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E5%B1%9E%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">6.1.</span> <span class="toc-text">修改文件所属用户：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="toc-number">6.2.</span> <span class="toc-text">删除用户：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E7%BB%84%EF%BC%9A"><span class="toc-number">6.3.</span> <span class="toc-text">创建用户组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E5%B1%9E%E7%94%A8%E6%88%B7%E7%BB%84%EF%BC%9A"><span class="toc-number">6.4.</span> <span class="toc-text">修改文件所属用户组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%BB%84%EF%BC%9A"><span class="toc-number">6.5.</span> <span class="toc-text">删除组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8chown-%E4%B8%80%E6%AC%A1%E4%BF%AE%E6%94%B9%E6%89%80%E6%9C%89%E8%80%85%E5%92%8C%E6%89%80%E5%B1%9E%E7%BB%84%EF%BC%9A"><span class="toc-number">6.6.</span> <span class="toc-text">使用chown 一次修改所有者和所属组：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%89%BE%E6%96%87%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">find命令：找文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E9%81%93%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">7.1.</span> <span class="toc-text">管道运算符 |</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk"><span class="toc-number">8.</span> <span class="toc-text">awk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep%E5%91%BD%E4%BB%A4%EF%BC%9A%E6%89%BE%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">9.</span> <span class="toc-text">grep命令：找文件内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#touch"><span class="toc-number">10.</span> <span class="toc-text">touch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="toc-number">11.</span> <span class="toc-text">软件安装：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%BA%90%EF%BC%9A"><span class="toc-number">11.1.</span> <span class="toc-text">软件源：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%99%E6%98%AF%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85%EF%BC%8C%E5%90%8C%E6%97%B6%E4%B9%9F%E6%94%AF%E6%8C%81%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="toc-number">11.1.1.</span> <span class="toc-text">这是在线安装，同时也支持离线安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PS"><span class="toc-number">11.1.2.</span> <span class="toc-text">PS:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="toc-number">11.2.</span> <span class="toc-text">压缩包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-number">12.</span> <span class="toc-text">多进程</span></a></li></ol>
       </div>
     
 
